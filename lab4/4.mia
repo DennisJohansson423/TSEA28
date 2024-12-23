@@ -1,0 +1,22 @@
+00 ASR := PC
+01 IR := PM, PC := PC+1
+02 uPC := K2(M-fältet)
+
+03 ASR := IR, uPC := K1(OP-fältet)
+04 ASR := PC, PC := PC+1, uPC := K1(OP-fältet)
+05 ASR := IR
+06 ASR := PM, uPC := K1(OP-fältet)
+07 AR := IR
+08 AR := GR3+AR
+09 ASR := AR, uPC := K1(OP-fältet)
+
+10 GRx := PM(ASR), uPC := 00
+11 PM(ASR) := GRx, uPC := 00
+12 GRx := GRx+PM(ASR), Z, N, O, C, uPC := 00
+13 GRx := GRx-PM(ASR), Z, N, O, C, uPC := 00
+14 GRx := GRx and PM(ASR), Z, N, uPC := 00
+15 LSR GRx, Y, Z, N, C, uPC := 00
+16 PC := PC+1+ADR, uPC := 00
+17 if (Z=0) PC := PC+1+ADR, uPC := 00
+else uPC := 00
+18 HALT
